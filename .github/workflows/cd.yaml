@@ -14,7 +14,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER_NAME }}
-  GKE_REGION: ${{ secrets.GKE_REGION }}
+  GKE_ZONE: ${{ secrets.GKE_REGION }}
   GAR_REGION: ${{ secrets.GAR_REGION }}
   GAR_REPOSITORY_BACKEND: ${{ secrets.GAR_REPOSITORY_BACKEND }}
   GAR_REPOSITORY_FRONTEND: ${{ secrets.GAR_REPOSITORY_FRONTEND }}
@@ -45,7 +45,7 @@ jobs:
       - name: Connect to GKE Cluster
         run: |
           gcloud container clusters get-credentials $GKE_CLUSTER \
-            --region $GKE_REGION \
+            --zone $GKE_ZONE \
             --project $PROJECT_ID
 
       - name: Setup Helm
