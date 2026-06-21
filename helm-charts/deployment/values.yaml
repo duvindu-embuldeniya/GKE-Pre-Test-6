@@ -6,7 +6,9 @@ postgres:
   storage: 1Gi
 
 backend:
-  image: duvindune/backend:v1
+  image:
+    repository: duvindune/backend
+    tag: v1
   replicas: 2
   port: 8000
   resources:
@@ -22,7 +24,9 @@ backend:
     cpuUtilization: 50
 
 frontend:
-  image: duvindune/frontend:v1
+  image:
+    repository: duvindune/frontend
+    tag: v1
   replicas: 2
   port: 80
   resources:
