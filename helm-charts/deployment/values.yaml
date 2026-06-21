@@ -1,0 +1,58 @@
+postgres:
+  db: mydatabase
+  user: postgres
+  password: mysecurepassword123
+  image: postgres:16
+  storage: 1Gi
+
+backend:
+  image: duvindune/backend:v1
+  replicas: 2
+  port: 8000
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "250m"
+    limits:
+      memory: "256Mi"
+      cpu: "500m"
+  hpa:
+    minReplicas: 2
+    maxReplicas: 5
+    cpuUtilization: 50
+
+frontend:
+  image: duvindune/frontend:v1
+  replicas: 2
+  port: 80
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "250m"
+  hpa:
+    minReplicas: 2
+    maxReplicas: 5
+    cpuUtilization: 50
+  service:
+    type: ClusterIP
+
+managedCertificate:
+  name: django-mc
+  domains:
+    - duvindu.org
+    - www.duvindu.org
+
+ingress:
+  name: react-ingress
+  staticIPName: k8s-test
+  className: gce
+  hosts:
+    - host: duvindu.org
+      path: /*
+      pathType: ImplementationSpecific
+    - host: www.duvindu.org
+      path: /*
+      pathType: ImplementationSpecific
