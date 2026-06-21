@@ -10,8 +10,8 @@ env:
   GAR_REGION: ${{ secrets.GAR_REGION }}
   GAR_REPOSITORY_BACKEND: ${{ secrets.GAR_REPOSITORY_BACKEND }}
   GAR_REPOSITORY_FRONTEND: ${{ secrets.GAR_REPOSITORY_FRONTEND }}
-  BACKEND_IMAGE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REPOSITORY_BACKEND }}
-  FRONTEND_IMAGE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REPOSITORY_FRONTEND }}
+  BACKEND_IMAGE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REPOSITORY_BACKEND }}/backend
+  FRONTEND_IMAGE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REPOSITORY_FRONTEND }}/frontend
   IMAGE_TAG: ${{ github.run_number }}
 
 jobs:
